@@ -12,7 +12,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
-		<artifactId>spring-cloud-gateway</artifactId>
+		<artifactId>zuul-gateway-demo</artifactId>
 		<groupId>com.lisong</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>

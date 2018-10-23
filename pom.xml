@@ -13,7 +13,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.lisong</groupId>
-  <artifactId>spring-cloud-gateway</artifactId>
+  <artifactId>zuul-gateway-demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <modules>
     <module>gateway-zuul</module>
@@ -23,7 +23,7 @@
   </modules>
   <packaging>pom</packaging>
 
-  <name>spring-cloud-gateway</name>
+  <name>zuul-gateway-demo</name>
   <description>Demo project for Spring Boot</description>
 
   <properties>
