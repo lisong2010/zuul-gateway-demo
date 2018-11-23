@@ -13,8 +13,8 @@
 
 	<parent>
 		<artifactId>zuul-gateway-demo</artifactId>
-		<groupId>com.lisong</groupId>
 		<version>0.0.1-SNAPSHOT</version>
+		<groupId>com.lisong</groupId>
 	</parent>
 
 	<properties>

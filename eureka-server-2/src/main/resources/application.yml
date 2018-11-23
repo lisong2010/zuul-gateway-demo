@@ -1,20 +1,20 @@
 eureka:
   instance:
     hostname: localhost
-    prefer-ip-address: false
   client:
     transport:
       applicationsResolverUseIp: true
+#    useDnsForFetchingServiceUrls: true
+#    eurekaServerDNSName: eureka.huodongkr.com
+#    eurekaServerPort: 8761
+#    region: ydd
+#    eureka-server-u-r-l-context: eureka
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
-#    register-with-eureka: false
-#    fetch-registry: false
-  server:
-    response-cache-update-interval-ms: 3000
 
 spring:
   application:
     name: eureka-server
 
 server:
-  port: 8761
+  port: 8762

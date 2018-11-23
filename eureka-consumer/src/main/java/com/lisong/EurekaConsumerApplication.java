@@ -1,40 +1,39 @@
 package com.lisong;
 
-import com.netflix.discovery.EurekaClient;
-import com.netflix.eureka.registry.PeerAwareInstanceRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class EurekaProvider1Application {
+public class EurekaConsumerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EurekaProvider1Application.class, args);
+		SpringApplication.run(EurekaConsumerApplication.class, args);
+	}
+
+	@LoadBalanced
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
 	}
 }
-
 
 @RestController
 class ProviderController{
 
 	@Autowired
-	EurekaClient discoveryClient;
+	RestTemplate restTemplate;
 
 	@RequestMapping("/")
 	public String root() throws InterruptedException {
-		Thread.sleep(200);
-		return "Hello, this is provider 1, app size is " + discoveryClient.getApplications().size();
+		return restTemplate.getForObject("http://eureka-provider", String.class);
 	}
 
-	@RequestMapping("/hello")
-	public String hello() {
-		return "Hello world, this is provider 1";
-	}
 }
-
